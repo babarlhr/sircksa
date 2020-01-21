@@ -68,7 +68,7 @@
             
             <xpath expr="//group[@name='offer']" position="replace">
                 <group name="offer">
-                    <field name="reporting_manager" />
+                    <field name="reporting_manager" invisible = "1"/>
                     <field name="assign_location" />
                     <field name="years_experience" />
                     <field name="edu_qualification" />
