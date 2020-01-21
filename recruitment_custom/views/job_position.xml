@@ -11,20 +11,20 @@
         <field name="model">hr.job</field>
         <field name="inherit_id" ref="hr_recruitment.view_hr_job_kanban"/>
         <field name="arch" type="xml">
-            <kanban>
-                <field name="name" position="after">
-                   <field name="operating_unit_id" />
-                    <field name="hr_responsible_id" />
-                </field>
-            </kanban>
+<!--            <kanban>-->
+<!--                <field name="name" position="after">-->
+<!--                   <field name="operating_unit_id" />-->
+<!--                    <field name="hr_responsible_id" />-->
+<!--                </field>-->
+<!--            </kanban>-->
             
             <xpath expr="//templates/t/div/div[2]/t/div[2]" position="before">
                 <div class="row">
                     <div class="col-xs-12">
                         <br />
-                        <t t-if="record.operating_unit_id.raw_value != ''">
-                           <b>Operating Unit :</b> <field name="operating_unit_id"/><br/>
-                        </t>
+<!--                        <t t-if="record.operating_unit_id.raw_value != ''">-->
+<!--                           <b>Operating Unit :</b> <field name="operating_unit_id"/><br/>-->
+<!--                        </t>-->
                         <t t-if="record.hr_responsible_id.raw_value != ''">
                             <b>HR Responsible :</b> <field name="hr_responsible_id"/><br/>
                         </t>
