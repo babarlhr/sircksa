@@ -237,7 +237,7 @@
                         <field name="badge_ids" mode="kanban" widget="many2many"/>
                     </page>
                     
-                    <page name="hr_settings" string="HR Settings" groups="hr.group_hr_user">
+                    <page name="hr_settings" string="HR Settings" >
                         <group>
                             <group string='Status' name="active_group">
                                 <field name="company_id" groups="base.group_multi_company"/>
