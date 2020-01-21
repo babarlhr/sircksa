@@ -20,19 +20,19 @@ class IrAttachment(models.Model):
 
 class Employee(models.Model):
     _inherit = "hr.employee"
-    
-    name = fields.Char(related='resource_id.name', string="Name (EN)", store=True, oldname='name_related')
+
+    name = fields.Char(related='resource_id.name', string="Name (EN)", store=True, oldname='name_related', readonly=False)
 #     Genaral information group
     join_date = fields.Date('Joining Date')
-    line_manager = fields.Many2one('hr.employee' , 'Line Manager')
-    senior_manager = fields.Many2one('hr.employee' , 'Senior Manager')
+    line_manager = fields.Many2one('hr.employee', 'Line Manager')
+    senior_manager = fields.Many2one('hr.employee', 'Senior Manager')
     contract_signing_date = fields.Date('Contract Signing Date')
     
 #     Medical group
     medical_insur = fields.Selection([
-                                        ('provided', 'Provided'),
-                                        ('not_provided' , 'Not Provided'),
-                                    ], 'Medical Insurance')
+            ('provided', 'Provided'),
+            ('not_provided' , 'Not Provided'),
+        ], 'Medical Insurance')
     medical_insur_no = fields.Char('Medical Insurance No:')
     MI_carrier = fields.Char('Carrier')
     MI_poloicy_type = fields.Char('Policy Type')
@@ -83,16 +83,6 @@ class Employee(models.Model):
     vehicle_id = fields.Many2one('account.asset.asset', string="Vehicle")
     imie_tag = fields.Char('IMIE Tag')
     
-#     docs to upload
-#     passport = fields.Binary('Passport')
-#     visa_doc = fields.Binary('Visa')
-#     iqama_doc = fields.Binary('Iqama')
-#     driver_licence_doc = fields.Binary('Driver Licence')
-#     tenancy_agreement_doc = fields.Binary('Tenancy Agreement')
-#     vehicle_reg_doc = fields.Binary('Vehicle Registeration')
-#     med_insur_policy = fields.Binary('Medical Insurance Policy')
-#     med_insur_card = fields.Binary('Medical Insurance Card')
-    
     docs_ids = fields.One2many('ir.attachment', 'employee_ext_id', string="Docs to Upload")
 
     emp_event_ids = fields.One2many('employee.event', 'employee_ids', string="Event")
@@ -137,6 +127,7 @@ class Employee(models.Model):
                     self.name, self.iqama_no))
         return res
 
+
 class EmployeeEvent(models.Model):
     _name = 'employee.event'
     
@@ -145,6 +136,7 @@ class EmployeeEvent(models.Model):
     event_desc = fields.Char('Event Desc')
     attachment_ids = fields.Many2many('ir.attachment',string='Attachments', attachment=True)
 
+
 class EmployeeAccomodationHistory(models.Model):
     _name = 'employee.accomodation.history'
     
@@ -152,7 +144,8 @@ class EmployeeAccomodationHistory(models.Model):
     event_date = fields.Date('Event Date')
     event_desc = fields.Char('Event Desc')
     attachment_ids = fields.Many2many('ir.attachment',string='Attachments', attachment=True)
-    
+
+
 class EmployeeTransportationHistory(models.Model):
     _name = 'employee.transportation.history'
     
@@ -161,6 +154,7 @@ class EmployeeTransportationHistory(models.Model):
     event_desc = fields.Char('Event Desc')
     attachment_ids = fields.Many2many('ir.attachment',string='Attachments', attachment=True)
 
+
 class EmployeeAccidentHistory(models.Model):
     _name = 'employee.accident.history'
     
@@ -168,7 +162,8 @@ class EmployeeAccidentHistory(models.Model):
     event_date = fields.Date('Event Date')
     event_desc = fields.Char('Event Desc')
     attachment_ids = fields.Many2many('ir.attachment',string='Attachments', attachment=True)
-    
+
+
 class EmployeeVacationHistory(models.Model):
     _name = 'employee.vacation.history'
     
@@ -176,7 +171,8 @@ class EmployeeVacationHistory(models.Model):
     event_date = fields.Date('Event Date')
     event_desc = fields.Char('Event Desc')
     attachment_ids = fields.Many2many('ir.attachment',string='Attachments', attachment=True)
-    
+
+
 class EmployeeTrainingHistory(models.Model):
     _name = 'employee.training.history'
     
@@ -184,7 +180,8 @@ class EmployeeTrainingHistory(models.Model):
     event_date = fields.Date('Event Date')
     event_desc = fields.Char('Event Desc')
     attachment_ids = fields.Many2many('ir.attachment',string='Attachments', attachment=True)
-    
+
+
 class EmployeeHSEIncidentHistory(models.Model):
     _name = 'employee.hse.incident.history'
     
@@ -192,6 +189,7 @@ class EmployeeHSEIncidentHistory(models.Model):
     event_date = fields.Date('Event Date')
     event_desc = fields.Char('Event Desc')
     attachment_ids = fields.Many2many('ir.attachment',string='Attachments', attachment=True)
+
 
 class EmployeeCareerProgress(models.Model):
     _name = 'employee.career.progression'
